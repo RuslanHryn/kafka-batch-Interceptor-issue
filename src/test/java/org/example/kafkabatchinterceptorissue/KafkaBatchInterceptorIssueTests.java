@@ -133,28 +133,6 @@ class KafkaBatchInterceptorIssueTests {
 
 
             });
-            factory.setRecordInterceptor(new RecordInterceptor<>() {
-                @Override
-                public ConsumerRecord<String, String> intercept(
-                        ConsumerRecord<String, String> record,
-                        Consumer<String, String> consumer) {
-                    log.info("Processing message");
-                    return record;
-                }
-
-                @Override
-                public void success(ConsumerRecord<String, String> record, Consumer<String, String> consumer) {
-                    log.info("Successfully processed message");
-                }
-
-                @Override
-                public void failure(
-                        ConsumerRecord<String, String> record,
-                        Exception exception,
-                        Consumer<String, String> consumer) {
-                    log.info("Failed to process message");
-                }
-            });
             return factory;
         }
 
